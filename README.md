@@ -28,12 +28,12 @@ cd kde-displays-switcher
 
 2. Make the script executable:
 ```bash
-chmod +x kde-displays-switcher.sh
+chmod +x displays-switcher.sh
 ```
 
 3. (Optional) Create a symlink to use it system-wide:
 ```bash
-sudo ln -s "$(pwd)/kde-displays-switcher.sh" /usr/local/bin/kde-displays-switcher
+sudo ln -s "$(pwd)/displays-switcher.sh" /usr/local/bin/displays-switcher
 ```
 
 4. Create your configuration file:
@@ -93,15 +93,15 @@ kscreen-doctor -o
 
 Switch to a specific preset:
 ```bash
-./kde-displays-switcher.sh -p laptop
-./kde-displays-switcher.sh -p all
+./displays-switcher.sh -p laptop
+./displays-switcher.sh -p all
 ```
 
 ### Cycle Through Presets
 
 Cycle to the next preset:
 ```bash
-./kde-displays-switcher.sh
+./displays-switcher.sh
 ```
 
 This is useful for keyboard shortcuts - each execution switches to the next preset in your configuration.
@@ -110,7 +110,7 @@ This is useful for keyboard shortcuts - each execution switches to the next pres
 
 Open an interactive dialog to select a preset:
 ```bash
-./kde-displays-switcher.sh -d
+./displays-switcher.sh -d
 ```
 
 ### Command-line Options
@@ -126,9 +126,9 @@ You can bind the script to keyboard shortcuts in KDE:
 1. Open **System Settings** → **Shortcuts** → **Custom Shortcuts**
 2. Create a new **Global Shortcut** → **Command/URL**
 3. Set the command to:
-   - Cycle mode: `/path/to/kde-displays-switcher.sh`
-   - GUI mode: `/path/to/kde-displays-switcher.sh -d`
-   - Specific preset: `/path/to/kde-displays-switcher.sh -p laptop`
+   - Cycle mode: `/path/to/displays-switcher.sh`
+   - GUI mode: `/path/to/displays-switcher.sh -d`
+   - Specific preset: `/path/to/displays-switcher.sh -p laptop`
 
 Example shortcuts:
 - `Meta+P` → Cycle through presets
@@ -150,7 +150,7 @@ The script supports all `kscreen-doctor` options:
 
 ```bash
 # Remove symlink (if created)
-sudo rm /usr/local/bin/kde-displays-switcher
+sudo rm /usr/local/bin/displays-switcher
 
 # Remove configuration
 rm ~/.config/displays-switcher/config.ini
