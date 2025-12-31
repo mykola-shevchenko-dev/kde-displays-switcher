@@ -115,9 +115,10 @@ displays-switcher -d
 
 ### Command-line Options
 
-- `-p PRESET` - Switch to the specified preset
-- `-d` - Show GUI dialog for preset selection
-- `-v` - Display version number
+- `-p, --preset PRESET` - Switch to the specified preset
+- `-d, --dialog` - Show GUI dialog for preset selection
+- `-v, --version` - Display version number
+- `-h, --help` - Show help message with usage information
 
 ## Keyboard Shortcuts
 
