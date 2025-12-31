@@ -3,7 +3,7 @@ export LC_ALL=en_US.UTF-8
 
 VERSION="0.0.1"
 
-CONFIG_DIR="~/.config/displays-switcher/"
+CONFIG_DIR="${HOME}/.config/displays-switcher/"
 CONFIG_FILE="config.ini"
 CONFIG_PATH="${CONFIG_DIR}${CONFIG_FILE}"
 
