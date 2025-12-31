@@ -14,12 +14,65 @@ DIALOG_MSG="Choose preset"
 
 show_dialog=false
 
+show_help() {
+    cat <<EOF
+KDE Displays Switcher v${VERSION}
+
+A lightweight tool for switching between display presets in KDE Plasma.
+
+USAGE:
+    displays-switcher [OPTIONS]
+
+OPTIONS:
+    -p, --preset PRESET    Switch to the specified preset
+    -d, --dialog           Show GUI dialog for preset selection
+    -v, --version          Display version number
+    -h, --help             Show this help message
+
+EXAMPLES:
+    displays-switcher              # Cycle to the next preset
+    displays-switcher -p laptop    # Switch to 'laptop' preset
+    displays-switcher -d           # Open GUI dialog to choose preset
+
+CONFIGURATION:
+    Config file: ${CONFIG_PATH}
+ 
+    Define presets in INI format:
+
+    [laptop]
+    output.eDP-2.enable
+    output.eDP-2.primary
+    output.eDP-2.scale.1
+    output.eDP-2.mode.1920x1080@60
+
+    [external]
+    output.DP-2.enable
+    output.DP-2.primary
+    output.DP-2.mode.2560x1440@144
+
+FINDING DISPLAYS:
+    Run 'kscreen-doctor -o' to list your display output names.
+
+KEYBOARD SHORTCUTS:
+    Bind to KDE shortcuts via System Settings → Shortcuts → Custom Shortcuts
+
+    Examples:
+    - Meta+P → displays-switcher (cycle presets)
+    - Meta+Shift+P → displays-switcher -d (GUI dialog)
+
+MORE INFO:
+    https://github.com/mykola-shevchenko-dev/kde-displays-switcher
+
+EOF
+}
+
 # handle launch params
 while [[ $# -gt 0 ]]; do
     case "$1" in
         -d|--dialog) show_dialog=true; shift ;;
         -v|--version) echo "version $VERSION"; exit 0 ;;
         -p|--preset) shift; preset="$1"; shift ;;
+        -h|--help) show_help; exit 0 ;;
         *) echo "Unknown option: $1"; exit 1 ;;
     esac
 done
