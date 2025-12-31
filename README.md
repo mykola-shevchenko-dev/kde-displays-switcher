@@ -18,30 +18,30 @@ A lightweight Bash script for switching between display presets in KDE Plasma us
 
 ## Installation
 
-### Manual Installation
-
 1. Clone the repository:
 ```bash
 git clone https://github.com/mykola-shevchenko-dev/kde-displays-switcher
 cd kde-displays-switcher
 ```
 
-2. Make the script executable:
+2. Install the script system-wide:
 ```bash
-chmod +x displays-switcher.sh
+sudo cp displays-switcher.sh /usr/local/bin/displays-switcher
+sudo chmod +x /usr/local/bin/displays-switcher
 ```
 
-3. (Optional) Create a symlink to use it system-wide:
+3. Create your configuration file:
 ```bash
-sudo ln -s "$(pwd)/displays-switcher.sh" /usr/local/bin/displays-switcher
-```
-
-4. Create your configuration file:
-```bash
+mkdir -p ~/.config/displays-switcher
 cp config-example.ini ~/.config/displays-switcher/config.ini
 ```
 
-### Configuration
+4. Edit the configuration file to match your display setup:
+```bash
+nano ~/.config/displays-switcher/config.ini
+```
+
+## Configuration
 
 The script looks for configuration in the following location: `~/.config/displays-switcher/config.ini`
 
@@ -93,15 +93,15 @@ kscreen-doctor -o
 
 Switch to a specific preset:
 ```bash
-./displays-switcher.sh -p laptop
-./displays-switcher.sh -p all
+displays-switcher -p laptop
+displays-switcher -p all
 ```
 
 ### Cycle Through Presets
 
 Cycle to the next preset:
 ```bash
-./displays-switcher.sh
+displays-switcher
 ```
 
 This is useful for keyboard shortcuts - each execution switches to the next preset in your configuration.
@@ -110,7 +110,7 @@ This is useful for keyboard shortcuts - each execution switches to the next pres
 
 Open an interactive dialog to select a preset:
 ```bash
-./displays-switcher.sh -d
+displays-switcher -d
 ```
 
 ### Command-line Options
@@ -126,9 +126,9 @@ You can bind the script to keyboard shortcuts in KDE:
 1. Open **System Settings** → **Shortcuts** → **Custom Shortcuts**
 2. Create a new **Global Shortcut** → **Command/URL**
 3. Set the command to:
-   - Cycle mode: `/path/to/displays-switcher.sh`
-   - GUI mode: `/path/to/displays-switcher.sh -d`
-   - Specific preset: `/path/to/displays-switcher.sh -p laptop`
+   - Cycle mode: `displays-switcher`
+   - GUI mode: `displays-switcher -d`
+   - Specific preset: `displays-switcher -p laptop`
 
 Example shortcuts:
 - `Meta+P` → Cycle through presets
@@ -149,7 +149,7 @@ The script supports all `kscreen-doctor` options:
 ## Uninstallation
 
 ```bash
-# Remove symlink (if created)
+# Remove script
 sudo rm /usr/local/bin/displays-switcher
 
 # Remove configuration

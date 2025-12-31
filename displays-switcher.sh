@@ -83,8 +83,8 @@ if [[ $show_dialog == true ]]; then
     choise=$(launch_dialog)
     if [[ -n "$choise" ]]; then
         apply_preset ${presets[$((choise))]}
-        exit 0
     fi
+    exit 0
 fi
 
 # toggle next preset
